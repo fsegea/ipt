@@ -1,0 +1,17 @@
+# Archivos con datos sensibles — NUNCA subir al repo
+config.sh
+.firewall_email_config
+
+# Archivos de ejemplo que SÍ se suben
+# config.sh.example
+# .firewall_email_config.example
+
+# Logs locales
+log.txt
+log1.txt
+*.log
+
+# Archivos temporales
+*.tmp
+*.bak
+*~

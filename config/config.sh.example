@@ -1,0 +1,42 @@
+# config/config.sh
+# COPIA ESTE ARCHIVO A config.sh Y RELLENA CON TUS VALORES REALES
+# cp config.sh.example config.sh
+
+IPT=$(which iptables)
+
+# IP del router/servidor
+SERVER_IP="10.0.0.1"
+
+# Interfaces de red
+IWAN="eth0"           # Interfaz WAN (salida a Internet)
+ILAN="eth1"           # Interfaz LAN principal
+ILAN_IOT="eth2"       # Interfaz LAN IoT
+ILAN_INVITADOS="eth3" # Interfaz LAN invitados
+
+# IP de host de salto / VPN (opcional)
+HO="0.0.0.0"
+
+# Servidores DNS
+DNS_SERVER1="1.1.1.1"
+DNS_SERVER2="1.0.0.1"
+
+# IPs de dispositivos infantiles (separadas por espacio)
+KIDS_IPS="10.0.0.10 10.0.0.11 10.0.0.12"
+IPSET_NAME="kids"
+# Ejemplo:
+# 10.0.0.10   tablet_hijo1
+# 10.0.0.11   portatil_hijo2
+
+# IPs privilegiadas — acceso total a WAN (separadas por espacio)
+PRIVILEGED_IPS="10.0.0.20 10.0.0.21"
+# Ejemplo:
+# 10.0.0.20   portatil_admin
+# 10.0.0.21   movil_admin
+
+# Control parental automático
+DAYS_CRON="0-6"                # Días de la semana (0=Dom, 6=Sáb)
+DAYS_DESC="Todos los días"
+BLOCK_HOUR_START="21"          # Hora de inicio de bloqueo
+BLOCK_MIN_START="00"
+BLOCK_HOUR_END="08"            # Hora de fin de bloqueo
+BLOCK_MIN_END="00"

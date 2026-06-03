@@ -1,0 +1,11 @@
+# COPIA ESTE ARCHIVO A .firewall_email_config Y RELLENA CON TUS VALORES REALES
+# cp .firewall_email_config.example .firewall_email_config
+# chmod 600 .firewall_email_config
+
+EMAIL_TO="destinatario@gmail.com"
+SMTP_USER="tucuenta@gmail.com"
+SMTP_PASS="tu_app_password_de_gmail"
+SMTP_SERVER="smtp.gmail.com"
+SMTP_PORT="587"
+# Nota: SMTP_PASS debe ser una App Password de Google, no tu contraseña normal.
+# Genérala en: https://myaccount.google.com/apppasswords
