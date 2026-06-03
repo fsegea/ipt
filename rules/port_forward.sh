@@ -39,26 +39,10 @@ $IPT -A PORT_FORWARD -i $IWAN -o $ILAN -d 10.10.0.100 -p tcp --dport 443 \
     -j DROP \
     -m comment --comment "NPM-ALEXA: DROP no-whitelist"
 
-
-
-# Reglas para tráfico NEW en WireGuard
-#$IPT -A PORT_FORWARD -i $IWAN -o $ILAN -d 10.10.0.100 -p udp --dport 51820 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "WG-NEW"
-# Reglas para tráfico NEW en HomeAssistant
-#$IPT -A PORT_FORWARD -i $IWAN -o $ILAN -d 10.10.0.100 -p tcp --dport 443 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "NPM-NEW"
 # Regla explicita para bloquear el puerto
 $IPT -A PORT_FORWARD -i $IWAN -o $ILAN -p udp --dport 51820 -j DROP -m comment --comment "BLOCK-WG-NEW"
 
 
-
-##############################
-# Bloquear Puertos Específicos
-##############################
-#echo "Bloquear puertos específicos"
-#Esta restriccion afecta a toda la LAN independientemente de si la conexion es legítima
-# Bloquear el puerto HTTP3 (puerto 443)
-#$IPT -A PORT_FORWARD -p udp --dport 443 -i $ILAN -m comment --comment "Bloquear puerto HTTP/3 443" -j DROP
-
-
-
-# Reglas para tráfico MK-775
-#$IPT -A PORT_FORWARD -i $IWAN -o $ILAN -d 10.10.0.181 -p udp --dport 5000 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "MK-775 NEW"
+# Regla explicitca para permitir transmission a 10.10.0.20
+$IPT -A PORT_FORWARD -i $IWAN -o $ILAN -d 10.10.0.20 -p udp --dport 51413 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "Transmission UDP NEW"
+$IPT -A PORT_FORWARD -i $IWAN -o $ILAN -d 10.10.0.20 -p tcp --dport 51413 -m conntrack --ctstate NEW -j ACCEPT -m comment --comment "Transmission TCP NEW"
